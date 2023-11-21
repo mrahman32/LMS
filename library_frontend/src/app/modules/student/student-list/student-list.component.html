@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Bootstrap Table with Header</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-10">
+                <h1>Student List</h1>
+            </div>
+            <div class="col-md-2 text-right">
+                <button class="btn btn-primary" (click)="addStudent()">Add Student</button>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col">First Name</th>
+                    <th scope="col">Middle Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Student Id</th>
+                    <th scope="col">Street</th>
+                    <th scope="col">Zip Code</th>
+                    <th scope="col">City</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of studentList; let i = index">
+                    <!-- <th scope="row">1</th> -->
+                    <td>{{student.firstName}}</td>
+                    <td>{{student.middleName}}</td>
+                    <td>{{student.lastName}}</td>
+                    <td>{{student.studentId}}</td>
+                    <td>{{student.street}}</td>
+                    <td>{{student.zipCode}}</td>
+                    <td>{{student.city}}</td>
+                    <td>{{student.state}}</td>
+                    <td>
+                        <button type="submit" class="btn btn-primary" (click)="editStudent(student._id)">Edit</button>
+                        &nbsp;
+                        <button type="submit" class="btn btn-danger" (click)="deleteStudent(student._id, i)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

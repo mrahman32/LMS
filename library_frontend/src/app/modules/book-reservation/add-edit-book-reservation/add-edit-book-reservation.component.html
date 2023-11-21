@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Bootstrap Form with Header</title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- Add the card element here -->
+                <h1>{{pageHeader}}</h1>
+                <div class="card">
+                    <div class="card-body">
+                        <form [formGroup]="bookReservationForm">
+
+                            <div class="mb-3">
+                                <label for="book" class="form-label">Book</label><span style="color: red;">*</span>
+
+                                <select class="form-select" [(ngModel)]="model.bookId" (ngModelChange)="onBookSelect()"
+                                    formControlName="bookId">
+                                    <option [value]="book._id" *ngFor="let book of booksDropdowns">
+                                        {{book.name}}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="bookCnt" class="form-label">Avaiable books for reservation</label><span
+                                    style="color: red;">*</span>
+                                <input type="text" class="form-control" formControlName="bookCnt"
+                                    [(ngModel)]="availableBookCnt" id="bookCnt">
+                                <!-- 
+                                <div *ngIf="name?.invalid && (name?.dirty ||name?.touched)">
+                                    <div style="color: red;" [hidden]="!name.errors['required']">
+                                        Name is required!
+                                    </div>
+                                </div> -->
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="student" class="form-label">Student</label><span
+                                    style="color: red;">*</span>
+
+                                <select class="form-select" [(ngModel)]="model.studentId" formControlName="studentId">
+                                    <option [value]="student._id" *ngFor="let student of studentDropdowns">
+                                        {{student.firstName}} {{student.lastName}}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Librarian</label><span style="color: red;">*</span>
+
+                                <select class="form-select" [(ngModel)]="model.librarianId"
+                                    formControlName="librarianId">
+                                    <option [value]="librarian._id" *ngFor="let librarian of librarianDropdowns">
+                                        {{librarian.firstName}} {{librarian.lastName}}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fromDate" class="form-label">From Date</label><span
+                                    style="color: red;">*</span>
+
+                                <div class="input-group">
+                                    <input type="date" class="form-control" name="fromDate"
+                                        formControlName="fromDate" [(ngModel)]="fromDateString" />
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="toDate" class="form-label">To Date</label><span style="color: red;">*</span>
+
+                                <div class="input-group">
+                                    <input type="date" class="form-control" name="toDate"
+                                        formControlName="toDate" [(ngModel)]="toDateString" />
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button [disabled]="submitBtnDisabled" style="width: 100px;" type="submit" class="btn btn-primary"
+                                    (click)="submit()">{{submitBtn}}</button>
+                                &nbsp;
+                                <button style="width: 100px;" type="submit" class="btn btn-danger"
+                                    (click)="cancel()">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

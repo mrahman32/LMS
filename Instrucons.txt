@@ -1,0 +1,10 @@
+Instructions for running the project:
+
+1) The front-end and back-end projects are two standalone projects.
+2) To confirm all dependencies write yarn install ( if the yarn is not installed type : npm install --global yarn ) 
+3) To run the front-end project write the command (npm start or ng serve --- npm start is preferred for this project)
+4) To run the back-end project, write the command (nodemon index.js)
+5) The DB name is the library ( after running the back-end project, the database will automatically created using Mongoose)
+
+---First, create a book, student, and librarian
+	after that book reservation can be created. Because this module has dependencies on books, students, and librarians. These values should be selected from the dropdown, which is loaded from the database.

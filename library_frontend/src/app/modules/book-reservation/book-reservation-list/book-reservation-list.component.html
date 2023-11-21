@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Bootstrap Table with Header</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-10">
+                <h1>Book Reservation List</h1>
+            </div>
+            <div class="col-md-2 text-right">
+                <button class="btn btn-primary" (click)="addBookReservation()">Add Book Reservation</button>
+            </div>
+        </div>
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <!-- Add your table headers here -->
+                        <th scope="col">Book</th>
+                        <th scope="col">Student</th>
+                        <th scope="col">Librarian</th>
+                        <th scope="col">From Date</th>
+                        <th scope="col">To Date</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let reservation of activeReservationList; let i = index">
+                        <td>{{reservation.bookName}}</td>
+                        <td>{{reservation.studentName}}</td>
+                        <td>{{reservation.librarianName}}</td>
+                        <td>{{reservation.fromDate | date}}</td>
+                        <td>{{reservation.toDate | date}}</td>
+                        <td class="action-buttons">
+                            <button type="submit" class="btn btn-primary" (click)="completeReservation(reservation)">Complete</button>
+                            &nbsp;
+                            <button type="submit" class="btn btn-primary" (click)="editReservation(reservation.id)">Edit</button>
+                            &nbsp;
+                            <button type="submit" class="btn btn-danger" (click)="deleteReservation(reservation.id, i)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
+

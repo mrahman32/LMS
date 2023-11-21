@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Bootstrap Form with Header</title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- Add the card element here -->
+                <h1>{{pageHeader}}</h1>
+                <div class="card">
+                    <div class="card-body">
+                        <form [formGroup]="bookForm">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label><span style="color: red;">*</span>
+                                <input type="text" class="form-control" formControlName="name" [(ngModel)]="model.name"
+                                    id="name">
+
+                                <div *ngIf="name?.invalid && (name?.dirty ||name?.touched)">
+                                    <div style="color: red;" [hidden]="!name.errors['required']">
+                                        Name is required!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="author" class="form-label">Author</label><span style="color: red;">*</span>
+                                <input type="text" class="form-control" formControlName="author"
+                                    [(ngModel)]="model.author" id="author">
+
+                                <div *ngIf="author?.invalid && (author?.dirty ||author?.touched)">
+                                    <div style="color: red;" [hidden]="!author.errors['required']">
+                                        Author is required!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="isbn" class="form-label">ISBN</label><span style="color: red;">*</span>
+                                <input type="text" class="form-control" formControlName="isbn" [(ngModel)]="model.isbn"
+                                    id="isbn">
+
+                                <div *ngIf="isbn?.invalid && (isbn?.dirty ||isbn?.touched)">
+                                    <div style="color: red;" [hidden]="!isbn.errors['required']">
+                                        ISBN is required!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="desc" class="form-label">Description</label>
+                                <textarea class="form-control" formControlName="description"
+                                    [(ngModel)]="model.description" id="desc" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Price</label><span style="color: red;">*</span>
+                                <input type="number" class="form-control" formControlName="price"
+                                    [(ngModel)]="model.price" id="price">
+
+                                <div *ngIf="price?.invalid && (price?.dirty ||price?.touched)">
+                                    <div style="color: red;" [hidden]="!price.errors['required']">
+                                        Price is required!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Quantity</label><span
+                                    style="color: red;">*</span>
+                                <input type="number" class="form-control" formControlName="quantity"
+                                    [(ngModel)]="model.quantity" id="quantity">
+
+                                <div *ngIf="quantity?.invalid && (quantity?.dirty ||quantity?.touched)">
+                                    <div style="color: red;" [hidden]="!quantity.errors['required']">
+                                        Quantity is required!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button style="width: 100px;" type="submit" class="btn btn-primary"
+                                    (click)="submit()">{{submitBtn}}</button>
+                                &nbsp;
+                                <button style="width: 100px;" type="submit" class="btn btn-danger"
+                                    (click)="cancel()">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

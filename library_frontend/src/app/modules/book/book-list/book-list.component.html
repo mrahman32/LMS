@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Bootstrap Table with Header</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-10">
+                <h1>Book List</h1>
+            </div>
+            <div class="col-md-2 text-right">
+                <button class="btn btn-primary" (click)="addBook()">Add Book</button>
+            </div>
+        </div>
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <!-- Add your table headers here -->
+                        <th scope="col">Name</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">ISBN</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Reserved Quantity</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let book of bookList; let i = index">
+                        <td>{{book.name}}</td>
+                        <td>{{book.author}}</td>
+                        <td>{{book.isbn}}</td>
+                        <td>{{book.description}}</td>
+                        <td>${{book.price.$numberDecimal}}</td>
+                        <td>{{book.quantity}}</td>
+                        <td>{{book.reservedQty}}</td>
+                        <td class="action-buttons">
+                            <button type="submit" class="btn btn-primary" (click)="editBook(book._id)">Edit</button>
+                            &nbsp;
+                            <button type="submit" class="btn btn-danger" (click)="deleteBook(book._id, i)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
