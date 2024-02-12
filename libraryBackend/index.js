@@ -11,7 +11,7 @@ mongoose.connect(mongoDb.db, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(()=>{
-    console.log('Database connected successfully!');
+    console.log('Database connected to CLOUD ATLAS successfully!');
 },error =>{
     console.log('Database error: '+error);
 });
